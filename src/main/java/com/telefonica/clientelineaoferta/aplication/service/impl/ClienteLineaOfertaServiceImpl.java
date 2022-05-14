@@ -15,7 +15,7 @@ public class ClienteLineaOfertaServiceImpl implements IClienteLineaOfertaService
 	
 	@Override
 	public ClienteResponse busquedaTipoNroDocumento(Integer tipoDocumento, String nroDocumento) {
-		cliLinOferService
+		
 		return null;
 	}
 
