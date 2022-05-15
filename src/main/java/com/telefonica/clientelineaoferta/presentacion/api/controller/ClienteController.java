@@ -1,5 +1,7 @@
 package com.telefonica.clientelineaoferta.presentacion.api.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +12,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.telefonica.clientelineaoferta.aplication.service.IClienteLineaOfertaService;
 import com.telefonica.clientelineaoferta.infrastructure.persistence.entity.Cliente;
+import com.telefonica.clientelineaoferta.infrastructure.persistence.model.ClienteBusqueda;
+import com.telefonica.clientelineaoferta.infrastructure.persistence.repository.IClienteProcedureRepository;
 import com.telefonica.clientelineaoferta.infrastructure.persistence.repository.IClienteRepository;
 import com.telefonica.clientelineaoferta.presentacion.api.entity.request.BusquedaFechasRequest;
 import com.telefonica.clientelineaoferta.presentacion.api.entity.response.ClienteResponse;
@@ -31,27 +36,20 @@ public class ClienteController {
 	@Autowired
 	IClienteLineaOfertaService clienteLineaOfertaService;
 	
-//	@Autowired
-//	IClienteRepository clienteRepository;
+	@Autowired
+	IClienteProcedureRepository clienteProcedureRepository;
 	
 	@ApiOperation(value = "Busqueda tipo y numero de documento de cliente", response = String.class)
-    @GetMapping(value="/busqueda/tipoDocumento/{tipoDocumento}/nroDocumento/{nroDocumento}")
-    public ResponseEntity<ClienteResponse> busquedaTipNroDc(@PathVariable Integer tipoDocumento,@PathVariable String nroDocumento) {
+    @GetMapping(value="/busqueda/tipoDocumento/{tipoDocumento}")
+    public ResponseEntity<List<ClienteResponse>> busquedaTipNroDc(@PathVariable Integer tipoDocumento,@RequestParam(required = false) String nroDocumento) {
    	    logger.info("Inicio busquedaTipNroDc");
    	    
-   	    
-//   	    Cliente cl = new Cliente();
-//   	    cl.setNombres("nombre");
-//   	    cl.setApePaterno("apePat");
-//   	    cl.setApeMaterno("apeMat");
-//   	    
-//   	    clienteRepository.save(cl);
    	    return ResponseEntity.status(HttpStatus.OK).body(clienteLineaOfertaService.busquedaTipoNroDocumento(tipoDocumento, nroDocumento));
     }
 	
 	@ApiOperation(value = "Busqueda personalizada", response = String.class)
     @PostMapping(value="/busqueda/rangoFechas")
-    public ResponseEntity<ClienteResponse> busquedaPersonalizada(@RequestBody BusquedaFechasRequest requestBusqueda) {
+    public ResponseEntity<List<ClienteResponse>> busquedaPersonalizada(@RequestBody BusquedaFechasRequest requestBusqueda) {
    	    logger.info("Inicio busquedaPersonalizada");
    	    return ResponseEntity.status(HttpStatus.OK).body(clienteLineaOfertaService.busquedaPersonalizada(requestBusqueda));
     }

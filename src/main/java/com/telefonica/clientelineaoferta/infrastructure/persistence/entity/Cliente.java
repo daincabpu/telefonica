@@ -8,13 +8,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedStoredProcedureQueries;
+import javax.persistence.NamedStoredProcedureQuery;
+import javax.persistence.ParameterMode;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 
 @Data
 @Builder
@@ -23,7 +28,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "CLIENTE")
 public class Cliente implements Serializable{
-	
+
+	public static final String procedureBuscarCliente = "BuscarClientes";
 	private static final long serialVersionUID = 1L;
 	
 	@Id 
