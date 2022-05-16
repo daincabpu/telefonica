@@ -79,6 +79,7 @@ final Logger logger = LoggerFactory.getLogger(this.getClass());
 	                    				List<Map<String, Object>> ofertasJson = (ArrayList)item.get("ofertas");
 	                    				
 										ofertas =  ofertasJson.stream().map(ofe ->{
+											ofe.get("fecha_inicio");
 											return OfertaModel.builder()
 													.codigoOferta(ofe.get("codigo_oferta").toString())
 													.descripcion(ofe.get("descripcion").toString())

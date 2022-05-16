@@ -54,7 +54,7 @@ class DateTimeImpl implements IDateTime {
 			SimpleDateFormat df = new SimpleDateFormat(formatOrigen);
 			Date fecha = df.parse(date);
 			df = new SimpleDateFormat(formatDestino);
-			return df.format(date);
+			return df.format(fecha);
 		} catch (Exception ex) {
 			logger.error(ex.getMessage());
             return null;
