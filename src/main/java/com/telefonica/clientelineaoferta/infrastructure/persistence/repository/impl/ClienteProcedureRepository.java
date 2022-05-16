@@ -19,6 +19,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
+import com.telefonica.clientelineaoferta.core.utils.IDateTime;
 import com.telefonica.clientelineaoferta.infrastructure.persistence.model.ClienteBusqueda;
 import com.telefonica.clientelineaoferta.infrastructure.persistence.repository.IClienteProcedureRepository;
 
@@ -32,6 +33,9 @@ final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
 	JdbcTemplate jdbcTemplate;
+	
+	@Autowired
+	IDateTime datetime;
 	
 	@Override
 	public List<ClienteBusqueda> buscarClienteByTipoNroDoc(Integer tipoDocumento, String nroDocumento) {
@@ -48,10 +52,12 @@ final Logger logger = LoggerFactory.getLogger(this.getClass());
                     				.builder()
 				                    	.clienteId(resultSet.getInt("cliente_id"))
 				                    	.nombres(resultSet.getString("nombres"))
-				                    	.apeMaterno(resultSet.getString("ape_paterno"))
+				                    	.apePaterno(resultSet.getString("ape_paterno"))
 				                    	.apeMaterno(resultSet.getString("ape_materno"))
 				                    	.tipoDocumento(resultSet.getInt("tipo_documento"))
 				                    	.nroDocumento(resultSet.getString("nro_documento"))
+				                    	.fechaNacimiento(datetime.format(resultSet.getDate("fecha_nacimiento"), "dd/MM/yyyy"))
+				                    	.estado(resultSet.getString("estado"))
 			                    	.build();
                     }
                 });

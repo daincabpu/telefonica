@@ -1,3 +1,4 @@
+--drop FUNCTION public.buscar_x_tip_nrodoc;
 
 create or replace FUNCTION public.buscar_x_tip_nrodoc(
 	IN p_in_tipo_documento smallint, 
@@ -8,6 +9,8 @@ create or replace FUNCTION public.buscar_x_tip_nrodoc(
 	nombres varchar,
 	ape_paterno varchar,
 	ape_materno varchar,
+	estado char,
+	fecha_nacimiento date,
 	tipo_documento smallint,
 	nro_documento varchar,
 	lineas_moviles json
@@ -52,6 +55,8 @@ BEGIN
 		c.nombres ,
 		c.ape_paterno ,
 		c.ape_materno ,
+		c.estado ,
+		c.fecha_nacimiento ,
 		c.tipo_documento ,
 		c.nro_documento ,
         lnof.lineas_moviles
