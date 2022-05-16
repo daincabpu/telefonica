@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.telefonica.clientelineaoferta.aplication.service.IClienteLineaOfertaService;
 import com.telefonica.clientelineaoferta.infrastructure.persistence.entity.Cliente;
-import com.telefonica.clientelineaoferta.infrastructure.persistence.model.ClienteBusqueda;
+import com.telefonica.clientelineaoferta.infrastructure.persistence.model.ClienteBusquedaModel;
 import com.telefonica.clientelineaoferta.infrastructure.persistence.repository.IClienteProcedureRepository;
 import com.telefonica.clientelineaoferta.infrastructure.persistence.repository.IClienteRepository;
 import com.telefonica.clientelineaoferta.presentacion.api.entity.request.BusquedaFechasRequest;

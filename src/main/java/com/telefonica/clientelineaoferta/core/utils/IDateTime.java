@@ -6,4 +6,5 @@ public interface IDateTime {
 	Date getCurrentDate();
 	boolean isValid(String text);
 	String format(Date date, String format);
+	String changeFormat(String date, String formatOrigen, String formatDestino);
 }

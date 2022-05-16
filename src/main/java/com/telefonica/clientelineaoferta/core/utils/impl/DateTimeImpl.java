@@ -46,4 +46,19 @@ class DateTimeImpl implements IDateTime {
             return null;
         }
 	}
+	
+	@Override
+	public String changeFormat(String date, String formatOrigen, String formatDestino) {
+		try {
+			
+			SimpleDateFormat df = new SimpleDateFormat(formatOrigen);
+			Date fecha = df.parse(date);
+			df = new SimpleDateFormat(formatDestino);
+			return df.format(date);
+		} catch (Exception ex) {
+			logger.error(ex.getMessage());
+            return null;
+        }
+	}
+	
 }

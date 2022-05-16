@@ -11,6 +11,8 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.telefonica.clientelineaoferta.Generated;
 import com.telefonica.clientelineaoferta.core.utils.IDateTime;
 
@@ -26,7 +28,12 @@ public class RestConfig {
 	public RestTemplate restTemplate() {
 	    return new RestTemplate();
 	}
-	
+	/*
+	@Bean
+	public ObjectMapper objectMapper() {
+	    return new ObjectMapper();
+	}
+	*/
 	@Bean
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

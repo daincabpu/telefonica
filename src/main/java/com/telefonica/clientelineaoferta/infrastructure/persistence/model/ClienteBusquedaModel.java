@@ -11,10 +11,15 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class LineaMovil {
-	private String nroTelefono;
+public class ClienteBusquedaModel {
+	
+	private Integer clienteId;
+	private String nombres;
+	private String apePaterno;
+	private String apeMaterno;
+	private Integer tipoDocumento;
+	private String nroDocumento;
 	private String estado;
-	private String tipo;
-	private String nombrePlan;
-	private List<Oferta> ofertas;
+	private String fechaNacimiento;
+	private List<LineaMovilModel> lineasMoviles;
 }

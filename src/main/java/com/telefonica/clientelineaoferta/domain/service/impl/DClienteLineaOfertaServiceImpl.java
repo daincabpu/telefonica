@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.telefonica.clientelineaoferta.domain.entity.ClienteBusquedaDTO;
 import com.telefonica.clientelineaoferta.domain.service.IDClienteLineaOfertaService;
-import com.telefonica.clientelineaoferta.infrastructure.persistence.model.ClienteBusqueda;
+import com.telefonica.clientelineaoferta.infrastructure.persistence.model.ClienteBusquedaModel;
 import com.telefonica.clientelineaoferta.infrastructure.persistence.repository.IClienteProcedureRepository;
 import com.telefonica.clientelineaoferta.infrastructure.persistence.repository.IClienteRepository;
 
@@ -24,7 +24,7 @@ public class DClienteLineaOfertaServiceImpl implements IDClienteLineaOfertaServi
 	
 	@Override
 	public List<ClienteBusquedaDTO> busquedaTipoNroDocumento(Integer tipoDocumento, String nroDocumento) {
-		List<ClienteBusqueda> resp = clienteProcedureRepository.buscarClienteByTipoNroDoc(tipoDocumento, nroDocumento);
+		List<ClienteBusquedaModel> resp = clienteProcedureRepository.buscarClienteByTipoNroDoc(tipoDocumento, nroDocumento);
 		
 		return resp.stream()
 				.map(item -> modelMapper.map(item, ClienteBusquedaDTO.class))

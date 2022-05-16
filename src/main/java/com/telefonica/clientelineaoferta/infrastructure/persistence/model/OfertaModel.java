@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Oferta {
+public class OfertaModel {
 	private String codigoOferta;
 	private String descripcion;
 	private String fechaInicio;
